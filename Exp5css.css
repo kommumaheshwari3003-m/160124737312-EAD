@@ -1,0 +1,58 @@
+/* Page styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f4f7;
+}
+
+/* Form container */
+.student-form {
+    width: 420px;
+    margin: 60px auto;
+}
+
+/* Fieldset styling */
+fieldset {
+    border: 2px solid #2f5fd7;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+/* Legend styling */
+legend {
+    font-size: 16px;
+    font-weight: bold;
+    color: #2f5fd7;
+    padding: 0 10px;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* Inputs - consistent width */
+input[type="text"],
+input[type="email"],
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 6px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Submit button */
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #2f5fd7;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+}

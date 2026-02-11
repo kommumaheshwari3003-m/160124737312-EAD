@@ -1,0 +1,31 @@
+/* Base styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+}
+
+/* Container */
+.container {
+    width: 80%;
+    margin: 40px auto;
+    display: flex;
+    gap: 20px;
+}
+
+/* Boxes */
+.box {
+    flex: 1;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Desktop layout (default) */
+/* Two-column layout already applied using flex */
+
+/* Mobile layout */
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+}

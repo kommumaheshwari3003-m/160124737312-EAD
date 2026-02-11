@@ -1,0 +1,27 @@
+/* Page styling */
+body {
+    background-color: #f2f2f2;
+}
+
+/* Center chessboard */
+.chessboard {
+    margin: 60px auto;
+    border-collapse: collapse;
+}
+
+/* Square size */
+.chessboard td {
+    width: 60px;
+    height: 60px;
+}
+
+/* Alternating colors using nth-child */
+.chessboard tr:nth-child(odd) td:nth-child(even),
+.chessboard tr:nth-child(even) td:nth-child(odd) {
+    background-color: black;
+}
+
+.chessboard tr:nth-child(odd) td:nth-child(odd),
+.chessboard tr:nth-child(even) td:nth-child(even) {
+    background-color: white;
+}
