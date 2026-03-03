@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Number Analyzer Dashboard</title>
+    <link rel="stylesheet" href="exp3.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Number Analyzer</h2>
+
+    <input type="number" id="numberInput" placeholder="Enter a number">
+    <button onclick="analyzeNumber()">Analyze</button>
+
+    <div class="results">
+        <p id="palindromeResult"></p>
+        <p id="armstrongResult"></p>
+        <p id="primeResult"></p>
+        <p id="factorialResult"></p>
+    </div>
+</div>
+
+<script>
+    /* -------- Named Functions -------- */
+
+    function isPalindrome(num) {
+        let str = num.toString();
+        let rev = str.split('').reverse().join('');
+        return str === rev;
+    }
+
+    function isArmstrong(num) {
+        let temp = num;
+        let digits = num.toString().length;
+        let sum = 0;
+
+        while (temp > 0) {
+            let digit = temp % 10;
+            sum += Math.pow(digit, digits);
+            temp = Math.floor(temp / 10);
+        }
+
+        return sum === num;
+    }
+
+    function isPrime(num) {
+        if (num <= 1) return false;
+
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) return false;
+        }
+        return true;
+    }
+
+    function factorial(num) {
+        if (num < 0) return "Not defined";
+        let fact = 1;
+        for (let i = 1; i <= num; i++) {
+            fact *= i;
+        }
+        return fact;
+    }
+
+    /* -------- Main Analyzer Function -------- */
+
+    function analyzeNumber() {
+        const num = parseInt(document.getElementById("numberInput").value);
+
+        if (isNaN(num)) {
+            alert("Please enter a valid number");
+            return;
+        }
+
+        document.getElementById("palindromeResult").textContent =
+            "Palindrome: " + (isPalindrome(num) ? "Yes" : "No");
+
+        document.getElementById("armstrongResult").textContent =
+            "Armstrong: " + (isArmstrong(num) ? "Yes" : "No");
+
+        document.getElementById("primeResult").textContent =
+            "Prime: " + (isPrime(num) ? "Yes" : "No");
+
+        document.getElementById("factorialResult").textContent =
+            "Factorial: " + factorial(num);
+    }
+</script>
+
+</body>
+</html>
