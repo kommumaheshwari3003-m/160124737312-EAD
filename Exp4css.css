@@ -1,0 +1,59 @@
+/* Page styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+}
+
+/* Center content */
+.container {
+    width: 70%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+/* Heading styling */
+h1 {
+    color: #2f5fd7;
+    margin-bottom: 15px;
+}
+
+/* Paragraph styling */
+p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Ordered list styling */
+ol {
+    display: inline-block;
+    text-align: left;
+    margin: 20px auto;
+}
+
+ol li {
+    margin: 8px 0;
+    font-size: 15px;
+}
+
+/* Image styling */
+img {
+    width: 300px;
+    margin: 20px 0;
+    border: 3px solid #2f5fd7;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Link styling */
+a {
+    color: #2f5fd7;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Hover effect on link */
+a:hover {
+    color: #1a3ea1;
+    text-decoration: underline;
+}

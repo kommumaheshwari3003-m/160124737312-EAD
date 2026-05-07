@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Real World Calculator</title>
+    <link rel="stylesheet" href="exp2.css">
+</head>
+<body>
+
+<div class="calculator">
+    <input type="text" id="display" disabled>
+
+    <div class="buttons">
+        <!-- Numbers -->
+        <button onclick="pressNumber('7')">7</button>
+        <button onclick="pressNumber('8')">8</button>
+        <button onclick="pressNumber('9')">9</button>
+        <button class="operator" onclick="setOperation('div')">÷</button>
+
+        <button onclick="pressNumber('4')">4</button>
+        <button onclick="pressNumber('5')">5</button>
+        <button onclick="pressNumber('6')">6</button>
+        <button class="operator" onclick="setOperation('mul')">×</button>
+
+        <button onclick="pressNumber('1')">1</button>
+        <button onclick="pressNumber('2')">2</button>
+        <button onclick="pressNumber('3')">3</button>
+        <button class="operator" onclick="setOperation('sub')">−</button>
+
+        <button onclick="pressNumber('0')">0</button>
+        <button onclick="clearDisplay()">C</button>
+        <button onclick="calculateResult()">=</button>
+        <button class="operator" onclick="setOperation('add')">+</button>
+    </div>
+</div>
+
+<script>
+    let firstNumber = "";
+    let secondNumber = "";
+    let currentOperation = "";
+
+    // Callback arrow functions
+    const add = (a, b) => a + b;
+    const subtract = (a, b) => a - b;
+    const multiply = (a, b) => a * b;
+    const divide = (a, b) => {
+        if (b === 0) return "Error";
+        return a / b;
+    };
+
+    // Main calculator function
+    function calculate(num1, num2, operationCallback) {
+        return operationCallback(num1, num2);
+    }
+
+    function pressNumber(num) {
+        if (currentOperation === "") {
+            firstNumber += num;
+            display.value = firstNumber;
+        } else {
+            secondNumber += num;
+            display.value = secondNumber;
+        }
+    }
+
+    function setOperation(op) {
+        currentOperation = op;
+    }
+
+    function calculateResult() {
+        const n1 = parseFloat(firstNumber);
+        const n2 = parseFloat(secondNumber);
+        let result;
+
+        switch (currentOperation) {
+            case "add":
+                result = calculate(n1, n2, add);
+                break;
+            case "sub":
+                result = calculate(n1, n2, subtract);
+                break;
+            case "mul":
+                result = calculate(n1, n2, multiply);
+                break;
+            case "div":
+                result = calculate(n1, n2, divide);
+                break;
+            default:
+                result = "";
+        }
+
+        display.value = result;
+        firstNumber = result.toString();
+        secondNumber = "";
+        currentOperation = "";
+    }
+
+    function clearDisplay() {
+        firstNumber = "";
+        secondNumber = "";
+        currentOperation = "";
+        display.value = "";
+    }
+</script>
+
+</body>
+</html>
