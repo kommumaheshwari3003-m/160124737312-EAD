@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Login Page</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="exp1.css">
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Login</h2>
+
+    <form id="loginForm">
+        <input type="text" id="username" placeholder="Username">
+        <span class="error" id="userError"></span>
+
+        <input type="password" id="password" placeholder="Password">
+        <span class="error" id="passError"></span>
+
+        <button type="submit" id="loginBtn">Login</button>
+    </form>
+
+    <p id="attemptMsg"></p>
+</div>
+
+<script>
+    // Closure for login attempt tracking
+    function loginAttemptTracker() {
+        let attempts = 3;
+
+        return function () {
+            attempts--;
+            return attempts;
+        };
+    }
+
+    const trackAttempts = loginAttemptTracker();
+
+    const form = document.getElementById("loginForm");
+    const loginBtn = document.getElementById("loginBtn");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value;
+
+        const userError = document.getElementById("userError");
+        const passError = document.getElementById("passError");
+        const attemptMsg = document.getElementById("attemptMsg");
+
+        userError.textContent = "";
+        passError.textContent = "";
+
+        let valid = true;
+
+        // Username validation
+        if (username === "") {
+            userError.textContent = "Username cannot be empty";
+            valid = false;
+        }
+
+        // Password validation
+        if (password.length < 6) {
+            passError.textContent = "Password must be at least 6 characters";
+            valid = false;
+        }
+
+        // Attempt handling
+        if (!valid) {
+            const remaining = trackAttempts();
+            attemptMsg.textContent = "Attempts left: " + remaining;
+
+            if (remaining === 0) {
+                loginBtn.disabled = true;
+                attemptMsg.textContent = "Login disabled. Too many attempts!";
+            }
+        } else {
+            alert("Login Successful!");
+            form.reset();
+        }
+    });
+</script>
+
+</body>
+</html>
