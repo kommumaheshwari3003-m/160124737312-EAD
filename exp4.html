@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>String Processor Tool</title>
+    <link rel="stylesheet" href="exp4.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>String Processor Tool</h2>
+
+    <textarea id="inputString" placeholder="Enter a sentence"></textarea>
+    <button onclick="processString()">Process</button>
+
+    <div class="results">
+        <p id="reverseResult"></p>
+        <p id="vowelResult"></p>
+        <p id="longestWordResult"></p>
+        <p id="upperResult"></p>
+    </div>
+</div>
+
+<script>
+    /* ---------- Anonymous Function Expression ---------- */
+    const reverseString = function (str) {
+        return str.split('').reverse().join('');
+    };
+
+    /* ---------- Arrow Function ---------- */
+    const countVowels = (str) => {
+        let vowels = 'aeiouAEIOU';
+        let count = 0;
+        for (let char of str) {
+            if (vowels.includes(char)) count++;
+        }
+        return count;
+    };
+
+    /* ---------- Anonymous Function Expression ---------- */
+    const longestWord = function (str) {
+        let words = str.split(' ');
+        let longest = "";
+
+        words.forEach(function (word) {
+            if (word.length > longest.length) {
+                longest = word;
+            }
+        });
+
+        return longest;
+    };
+
+    /* ---------- Main Function ---------- */
+    function processString() {
+        const str = document.getElementById("inputString").value;
+
+        if (str.trim() === "") {
+            alert("Please enter a sentence");
+            return;
+        }
+
+        document.getElementById("reverseResult").textContent =
+            "Reversed String: " + reverseString(str);
+
+        document.getElementById("vowelResult").textContent =
+            "Vowel Count: " + countVowels(str);
+
+        document.getElementById("longestWordResult").textContent =
+            "Longest Word: " + longestWord(str);
+
+        document.getElementById("upperResult").textContent =
+            "Uppercase: " + str.toUpperCase();
+    }
+</script>
+
+</body>
+</html>
